@@ -2,7 +2,7 @@ from django.db import models
 from localflavor.us.models import USStateField
 from django.utils.translation import ugettext as _
 from django.forms import ModelForm
-
+from django.contrib.auth.models import User
 
 class ContactInformation(models.Model):
     username = models.CharField(_("username"), max_length=100, blank=False, unique=True)
@@ -13,9 +13,24 @@ class ContactInformation(models.Model):
     zip_code = models.CharField(_("zip code"), max_length=5, default="66506", blank=False)
 
     def __str__(self):
-        return self.name
+        return self.username
 
 
+class Profile(models.Model):
+    user = models.OneToOneField(
+                                User,
+                                on_delete=models.DO_NOTHING,
+                                )
+
+    picture = models.ImageField()
+    Address = models.OneToOneField(
+                                    ContactInformation,
+                                    on_delete=models.DO_NOTHING,
+
+
+                                  )
+    def __str__(self):
+        return self.user.username
 
 
 

@@ -7,7 +7,7 @@ from django.contrib.auth.decorators import login_required
 from users.forms import SignUpForm, LoginForm, AddressForm
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
-from users.models import ContactInformation
+from users.models import ContactInformation, Profile
 from django.db.models import Q
 
 
@@ -98,6 +98,16 @@ def AddressPage(request):
         'form': form, 'username': st, 'location': location, 'logout':'../../logout'
     })
 
+def AddressChange(request):
+    location = "Profile / Address / Change"
+
+    if request.method == "Post":
+        query = ContactInformation.objects.filter(username = request.user.username)
+
+        if not query:
+            return render(request, 'users/profile.html', {'username': st, 'user': request.user, 'location': 'Profile', 'logout':'../logout', 'form': form})
+
+
 
 
 
@@ -120,6 +130,15 @@ def profile(request):
         Q(username=request.user.username)
     )
 
-    print(address.address_1)
+    profile = Profile.objects.get(
+        Q(user = request.user.id)
+    )
 
-    return render(request, 'users/profile.html', {'username': st, 'user': request.user, 'location': 'Profile', 'logout':'../logout', 'form': form, 'address': address})
+    picture = "/media/%s"%(profile.picture)
+
+
+    #userProfile = Profile
+
+    #print(address.address_1)
+
+    return render(request, 'users/profile.html', {'username': st, 'user': request.user, 'location': 'Profile', 'logout':'../logout', 'form': form, 'address': address,'picture':picture})
