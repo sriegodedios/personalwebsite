@@ -1,0 +1,177 @@
+{% extends 'users/base/base.html' %}
+{% load static %}
+
+{% block content %}
+  <div class="row">
+    <div class="col-sm-6 col-lg-3">
+      <div class="card text-white bg-primary">
+      <div class="card-body pb-0">
+      <div class="btn-group float-right">
+      <button type="button" class="btn btn-transparent dropdown-toggle p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <i class="icon-settings"></i>
+      </button>
+      <div class="dropdown-menu dropdown-menu-right">
+      <a class="dropdown-item" href="#" >Lock</a>
+      <a class="dropdown-item isDisabled" href="#">Unlock</a>
+      <a class="dropdown-item" href="#">Something else here</a>
+      </div>
+      </div>
+      <div class="text-value">9.823</div>
+      <div>Current Status</div>
+      <div class="row">
+          <div class="col-sm-12">
+            <i class="fa fa-unlock" style="font-size: 66px;text-align: center; text-align: center; display: block;"></i>
+          </div>
+      </div>
+    <br/>
+      </div>
+
+
+      <!--div class="chart-wrapper mt-3 mx-3" style="height:70px;">
+        <div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;">
+          <div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+            <div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0">
+            </div>
+          </div>
+          <div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;">
+            <div style="position:absolute;width:200%;height:200%;left:0;top:0">
+            </div>
+          </div>
+        </div>
+      <canvas id="card-chart1" class="chart chartjs-render-monitor" height="140" width="398" style="display: block; height: 70px; width: 199px;">
+          <i class="icon-energy"></i>
+      </canvas>
+      <div id="card-chart1-tooltip" class="chartjs-tooltip top" style="opacity: 0; left: 116.538px; top: 93.2778px;"><div class="tooltip-header">
+        <div class="tooltip-header-item">April</div>
+      </div>
+      <div class="tooltip-body">
+        <div class="tooltip-body-item">
+          <span class="tooltip-body-item-color" style="background-color: rgb(0, 165, 224);"></span>
+          <span class="tooltip-body-item-label">My First dataset</span>
+          <span class="tooltip-body-item-value">84</span>
+        </div>
+      </div>
+    </div>
+  </div-->
+    </div>
+  </div>
+  <div class="col-sm-6 col-lg-3">
+    <div class="card text-white bg-info">
+    <div class="card-body pb-0">
+    <button type="button" class="btn btn-transparent p-0 float-right">
+    <i class="icon-location-pin"></i>
+    </button>
+    <div class="text-value">9.823</div>
+    <div>Members online</div>
+    </div>
+    <div class="chart-wrapper mt-3 mx-3" style="height:70px;"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+    <canvas id="card-chart2" class="chart chartjs-render-monitor" height="140" width="398" style="display: block; height: 70px; width: 199px;"></canvas>
+    <div id="card-chart2-tooltip" class="chartjs-tooltip top bottom" style="opacity: 0; left: 178.538px; top: 110.535px;"><div class="tooltip-header"><div class="tooltip-header-item">June</div></div><div class="tooltip-body"><div class="tooltip-body-item"><span class="tooltip-body-item-color" style="background-color: rgb(38, 203, 253);"></span><span class="tooltip-body-item-label">My First dataset</span><span class="tooltip-body-item-value">22</span></div></div></div></div>
+    </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+    <div class="card text-white bg-warning">
+    <div class="card-body pb-0">
+    <div class="btn-group float-right">
+    <button type="button" class="btn btn-transparent dropdown-toggle p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <i class="icon-settings"></i>
+    </button>
+    <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(31px, 23px, 0px);">
+    <a class="dropdown-item" href="#">Action</a>
+    <a class="dropdown-item" href="#">Another action</a>
+    <a class="dropdown-item" href="#">Something else here</a>
+    </div>
+    </div>
+    <div class="text-value">9.823</div>
+    <div>Members online</div>
+    </div>
+    <div class="chart-wrapper mt-3" style="height:70px;"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+    <canvas id="card-chart3" class="chart chartjs-render-monitor" height="140" width="536" style="display: block; height: 70px; width: 268px;"></canvas>
+    <div id="card-chart3-tooltip" class="chartjs-tooltip top" style="opacity: 0; left: 45px; top: 101.3px;"><div class="tooltip-header"><div class="tooltip-header-item">February</div></div><div class="tooltip-body"><div class="tooltip-body-item"><span class="tooltip-body-item-color" style="background-color: rgba(230, 230, 230, 0.2);"></span><span class="tooltip-body-item-label">My First dataset</span><span class="tooltip-body-item-value">81</span></div></div></div></div>
+    </div>
+    </div>
+    <div class="col-sm-6 col-lg-3">
+  <div class="card text-white bg-danger">
+  <div class="card-body pb-0">
+  <div class="btn-group float-right">
+  <button type="button" class="btn btn-transparent dropdown-toggle p-0" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <i class="icon-settings"></i>
+  </button>
+  <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(31px, 23px, 0px);">
+  <a class="dropdown-item" href="#">Action</a>
+  <a class="dropdown-item" href="#">Another action</a>
+  <a class="dropdown-item" href="#">Something else here</a>
+  </div>
+  </div>
+  <div class="text-value">9.823</div>
+  <div>Members online</div>
+  </div>
+  <div class="chart-wrapper mt-3 mx-3" style="height:70px;"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+  <canvas id="card-chart4" class="chart chartjs-render-monitor" height="140" width="472" style="display: block; height: 70px; width: 236px;"></canvas>
+  </div>
+  </div>
+  </div>
+</div>
+<div class="card">
+<div class="card-body">
+<div class="row">
+<div class="col-sm-5">
+<h4 class="card-title mb-0">Status</h4>
+<div class="small text-muted">November 2017</div>
+</div>
+
+<div class="col-sm-7 d-none d-md-block">
+<button type="button" class="btn btn-primary float-right">
+<i class="icon-cloud-download"></i>
+</button>
+<div class="btn-group btn-group-toggle float-right mr-3" data-toggle="buttons">
+<label class="btn btn-outline-secondary">
+<input type="radio" name="options" id="option1" autocomplete="off"> Day
+</label>
+<label class="btn btn-outline-secondary active">
+<input type="radio" name="options" id="option2" autocomplete="off" checked=""> Month
+</label>
+<label class="btn btn-outline-secondary">
+<input type="radio" name="options" id="option3" autocomplete="off"> Year
+</label>
+</div>
+</div>
+
+</div>
+
+<div class="chart-wrapper" style="height:300px;margin-top:40px;"><div class="chartjs-size-monitor" style="position: absolute; left: 0px; top: 0px; right: 0px; bottom: 0px; overflow: hidden; pointer-events: none; visibility: hidden; z-index: -1;"><div class="chartjs-size-monitor-expand" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:1000000px;height:1000000px;left:0;top:0"></div></div><div class="chartjs-size-monitor-shrink" style="position:absolute;left:0;top:0;right:0;bottom:0;overflow:hidden;pointer-events:none;visibility:hidden;z-index:-1;"><div style="position:absolute;width:200%;height:200%;left:0; top:0"></div></div></div>
+<canvas id="main-chart" class="chart chartjs-render-monitor" height="600" width="2256" style="display: block; height: 300px; width: 1128px;"></canvas>
+</div>
+</div>
+<div class="card-footer">
+<div class="row text-center">
+<div class="col-sm-12 col-md mb-sm-2 mb-0">
+<div class="text-muted">Visits</div>
+<strong>29.703 Users (40%)</strong>
+<div class="progress progress-xs mt-2">
+<div class="progress-bar bg-success" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+</div>
+<div class="col-sm-12 col-md mb-sm-2 mb-0">
+<div class="text-muted">Unique</div>
+<strong>24.093 Users (20%)</strong>
+<div class="progress progress-xs mt-2">
+<div class="progress-bar bg-info" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+</div>
+<div class="col-sm-12 col-md mb-sm-2 mb-0">
+<div class="text-muted">Pageviews</div>
+<strong>78.706 Views (60%)</strong>
+<div class="progress progress-xs mt-2">
+<div class="progress-bar bg-warning" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+</div>
+<div class="col-sm-12 col-md mb-sm-2 mb-0">
+<div class="text-muted">New Users</div>
+<strong>22.123 Users (80%)</strong>
+<div class="progress progress-xs mt-2">
+<div class="progress-bar bg-danger" role="progressbar" style="width: 80%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
+</div>
+</div>
+
+{% endblock %}

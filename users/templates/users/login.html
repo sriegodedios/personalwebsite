@@ -1,0 +1,77 @@
+<html>
+  <head>
+  {% load bootstrap4 %}
+  {# Load CSS and JavaScript #}
+  {% load widget_tweaks %}
+  {% bootstrap_css %}
+  {% bootstrap_javascript jquery='full' %}
+  {% load static %}
+
+  </head>
+  <body>
+    <div class="container">
+      <br/>
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card">
+            <h4 class="card-header">Sign In</h4>
+            <article class="card-body">
+
+              <form method="post">
+                {% csrf_token %}
+                {% for hidden_field in form.hidden_fields %}
+                  {{ hidden_field }}
+                {% endfor %}
+
+                      {% for field in form.visible_fields %}
+
+
+                      <div class="form-group">
+                        {{ field.label_tag }}
+
+                        {% if form.is_bound %}
+                          {% if field.errors %}
+                            {% render_field field class="form-control is-invalid" %}
+                            {% for error in field.errors %}
+                              <div class="invalid-feedback">
+                                {{ error }}
+                              </div>
+                            {% endfor %}
+                              {% else %}
+                                {% render_field field class="form-control is-valid" %}
+                              {% endif %}
+                            {% else %}
+                          {% render_field field class="form-control" %}
+                        {% endif %}
+
+                        {% if field.help_text %}
+                          <small class="form-text text-muted">{{ field.help_text }}</small>
+                        {% endif %}
+                      </div>
+
+                    {% endfor %}
+                    {% buttons %}
+                        <button type="submit" class="btn btn-primary btn-lg btn-block">Sign In</button>
+                    {% endbuttons %}
+
+
+
+
+
+
+
+
+              </form>
+                  
+
+            </article>
+            <div class="card-footer">
+              <a href="../signup" class="btn btn-outline-info btn-lg btn-block" role="button" aria-pressed="true">Don't have an account? Sign Up Here!</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </body>
+</html>
