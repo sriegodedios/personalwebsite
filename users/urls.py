@@ -15,4 +15,6 @@ urlpatterns = [
     path('password/change-password/', views.ResetPassword, name='Change-Password'),
     path('profile/address-info/',views.AddressPage, name='Address-Update'),
     path('profile/address-info/change',views.AddressChange, name='Address-Change'),
+    path('pictures/submit', views.ProfilePicUpdate, name='Update Profile Picture'),
+    
 ]

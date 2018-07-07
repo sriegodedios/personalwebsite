@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from localflavor.us.models import USStateField
-from users.models import ContactInformation
+from users.models import ContactInformation, Profile
 from django.forms import ModelForm
 
 
@@ -27,6 +27,21 @@ class AddressForm(ModelForm):
         fields = ('username', 'address_1', 'address_2','city','state','zip_code')
 
 
+
 class ChangePasswordForm:
     model = User
     fields = ('new_password1','new_password2','old_password')
+
+class ProfileForm(ModelForm):
+    class Meta:
+        model = User
+        fields = ("username", "email", "first_name", "last_name")
+        
+class ImageUploadForm(ModelForm):
+    class Meta:
+        model = Profile
+        fields = ("picture",)
+
+#class PictureUploadForm(ModelForm):
+#    class Meta:
+#        model = forms.ImageFields()

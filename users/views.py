@@ -4,11 +4,12 @@ from django.contrib.auth import login, authenticate, update_session_auth_hash
 from django.shortcuts import render, redirect, get_list_or_404, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
-from users.forms import SignUpForm, LoginForm, AddressForm
+from users.forms import SignUpForm, LoginForm, AddressForm, ImageUploadForm, ProfileForm
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib import messages
 from users.models import ContactInformation, Profile
 from django.db.models import Q
+from django.contrib.auth.models import User
 
 
 # Create your views here.
@@ -47,7 +48,12 @@ def index(request):
     fname = request.user.first_name
     lname = request.user.last_name
     st = "%s %s" %(fname,lname)
-    return render(request, 'users/index.html', {'username': st, 'location':'Dashboard', 'logout':'../users/logout'})
+
+    profile = Profile.objects.get(Q(user = request.user.id))
+    picture = "/media/%s"%(profile.picture)
+
+    pictureform = ImageUploadForm(request.user)
+    return render(request, 'users/index.html', {'username': st, 'location':'Dashboard', 'logout':'../users/logout', 'picture':picture})
 
 def ajax(request):
     return render(request, 'users/pages/404.html')
@@ -57,6 +63,11 @@ def ResetPassword(request):
     fname = request.user.first_name
     lname = request.user.last_name
     st = "%s %s" %(fname,lname)
+
+    profile = Profile.objects.get(Q(user = request.user.id))
+
+    picture = "/media/%s"%(profile.picture)
+
     if request.method == 'POST':
         form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid():
@@ -69,7 +80,7 @@ def ResetPassword(request):
     else:
         form = PasswordChangeForm(request.user)
     return render(request, 'users/change-password.html', {
-        'form': form, 'username': st, 'location': 'Profile / Password Reset', 'logout':'../../logout'
+        'form': form, 'username': st, 'location': 'Profile / Password Reset', 'logout':'../../logout','picture':picture
     })
 
 @login_required(login_url='/users/login/')
@@ -78,6 +89,12 @@ def AddressPage(request):
     fname = request.user.first_name
     lname = request.user.last_name
     st = "%s %s" %(fname,lname)
+    profile = Profile.objects.get(
+        Q(user = request.user.id)
+    )
+    picture = "/media/%s"%(profile.picture)
+
+
 
     if request.method == "POST":
         form = AddressForm(request.POST)
@@ -95,7 +112,7 @@ def AddressPage(request):
     else:
         form = AddressForm()
     return render(request, 'users/update-address.html', {
-        'form': form, 'username': st, 'location': location, 'logout':'../../logout'
+        'form': form, 'username': st, 'location': location, 'logout':'../../logout', 'picture' : picture
     })
 
 def AddressChange(request):
@@ -108,7 +125,40 @@ def AddressChange(request):
             return render(request, 'users/profile.html', {'username': st, 'user': request.user, 'location': 'Profile', 'logout':'../logout', 'form': form})
 
 
+def ProfilePicUpdate(request):
+    if request.method == "POST":
 
+        user_profile = Profile.objects.get(Q(user=request.user))
+        update_user = ProfileForm(data=request.POST, instance=request.user)
+        form = ImageUploadForm(request.POST, instance=user_profile)
+        if form.is_valid():
+
+            profile = user_profile
+
+            print(profile)
+
+
+            profile.picture =request.FILES['picture']
+
+
+            profile.save()
+            return redirect('../../users/profile')
+
+        return HttpResponse("Uh oh22")
+        #print(request.POST)
+        #profile.picture.picture = request.FILES['picture']
+        #profile.picture.name = request.FILES['picture'].name
+        #print(request.FILES['picture'])
+
+
+
+
+
+        #print(profile.picture)
+
+
+
+    return HttpResponse("Uh oh")
 
 
 @login_required(login_url='/users/login/')
@@ -136,9 +186,9 @@ def profile(request):
 
     picture = "/media/%s"%(profile.picture)
 
-
+    pictureform = ImageUploadForm(request.user)
     #userProfile = Profile
 
     #print(address.address_1)
 
-    return render(request, 'users/profile.html', {'username': st, 'user': request.user, 'location': 'Profile', 'logout':'../logout', 'form': form, 'address': address,'picture':picture})
+    return render(request, 'users/profile.html', {'username': st, 'user': request.user, 'location': 'Profile', 'logout':'../logout', 'form': form, 'address': address,'picture':picture, 'pictureform':pictureform})
