@@ -117,13 +117,32 @@ def AddressPage(request):
 
 def AddressChange(request):
     location = "Profile / Address / Change"
+    fname = request.user.first_name
+    lname = request.user.last_name
+    st = "%s %s" %(fname,lname)
 
-    if request.method == "Post":
-        query = ContactInformation.objects.filter(username = request.user.username)
+    user_profile = Profile.objects.get(Q(user=request.user))
+    if request.method == "POST":
+        address = user_profile.Address
+        address.address_1 = request.POST['address_1']
+        address.address_2 = request.POST['address_2']
+        address.zip_code = request.POST['zip_code']
+        address.city = request.POST['city']
+        address.state = request.POST['state']
 
-        if not query:
-            return render(request, 'users/profile.html', {'username': st, 'user': request.user, 'location': 'Profile', 'logout':'../logout', 'form': form})
+        address.save()
+        user_profile.save()
+        print(address)
+        return redirect('../../profile')
 
+
+
+    else:
+        Address = user_profile.Address
+
+
+        form = AddressForm()
+        return render(request, 'users/update-address.html', {'username': st, 'user': request.user, 'location': 'Profile', 'logout':'../logout', 'form': form, 'address':Address})
 
 def ProfilePicUpdate(request):
     if request.method == "POST":

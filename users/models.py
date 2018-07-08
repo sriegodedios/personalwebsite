@@ -26,7 +26,7 @@ class Profile(models.Model):
                                 User,
                                 on_delete=models.DO_NOTHING,
                                 )
-    picture = models.ImageField(upload_to = userpath)
+    picture = models.ImageField(upload_to = userpath,)
     Address = models.OneToOneField(
                                     ContactInformation,
                                     on_delete=models.DO_NOTHING,
