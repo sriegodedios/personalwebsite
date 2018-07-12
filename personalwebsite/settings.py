@@ -143,3 +143,5 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'users/media/')
 MEDIA_URL = '/media/'
+
+ALLOWED_HOSTS = ('10.0.0.225','localhost','127.0.0.1')
