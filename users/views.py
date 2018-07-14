@@ -10,7 +10,7 @@ from django.contrib import messages
 from users.models import ContactInformation, Profile
 from django.db.models import Q
 from django.contrib.auth.models import User
-
+from smbus2 import SMBus
 
 # Create your views here.
 def registration(request):

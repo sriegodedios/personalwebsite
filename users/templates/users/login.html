@@ -6,7 +6,7 @@
   {% bootstrap_css %}
   {% bootstrap_javascript jquery='full' %}
   {% load static %}
-  
+
 
   </head>
   <body>
@@ -17,7 +17,9 @@
           <div class="card">
             <h4 class="card-header">Sign In</h4>
             <article class="card-body">
-
+              {% for message in messages %}
+                  {{message}}
+              {% endfor %}
               <form method="post">
                 {% csrf_token %}
                 {% for hidden_field in form.hidden_fields %}
