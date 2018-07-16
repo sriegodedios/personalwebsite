@@ -4,6 +4,21 @@ from django.utils.translation import ugettext as _
 from django.forms import ModelForm
 from django.contrib.auth.models import User
 
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
 
 
 def userpath(instance, filename):
@@ -32,6 +47,18 @@ class Profile(models.Model):
                                     on_delete=models.DO_NOTHING,
 
                                     )
+
+
+    def __str__(self):
+        return self.user.username
+
+class Pin(models.Model):
+    user = models.OneToOneField(
+        User,
+        on_delete=models.DO_NOTHING,
+        )
+    pin = models.DecimalField(max_digits=11,decimal_places=0)
+
     def __str__(self):
         return self.user.username
 

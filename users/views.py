@@ -10,8 +10,14 @@ from django.contrib import messages
 from users.models import ContactInformation, Profile
 from django.db.models import Q
 from django.contrib.auth.models import User
-from smbus import SMBus
+#from smbus import SMBus
 
+
+
+#bus = SMBus(1)
+
+#arduinoAddress = 0x12
+#alue =
 # Create your views here.
 def registration(request):
     if request.method == 'POST':
@@ -211,3 +217,6 @@ def profile(request):
     #print(address.address_1)
 
     return render(request, 'users/profile.html', {'username': st, 'user': request.user, 'location': 'Profile', 'logout':'../logout', 'form': form, 'address': address,'picture':picture, 'pictureform':pictureform})
+
+def LockUnlock(request):
+    return NONE
