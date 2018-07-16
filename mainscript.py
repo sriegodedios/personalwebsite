@@ -4,7 +4,7 @@ from django.core.wsgi import get_wsgi_application
 #from smbus2 import SMBus
 import threading
 import RPi.GPIO as GPIO
-import smbus as SMBus
+import smbus
 
 slaveAddress = 0x12
 numberInterruptPIN = 19
@@ -51,7 +51,7 @@ if __name__ == '__main__':
     GPIO.setup(numberInterruptPIN, GPIO.IN)
     GPIO.setup(messageInterruptPIN, GPIO.IN)
 
-    i2c = SMBus(1)
+    i2c = smbus.SMBus(1)
 
     GPIO.add_event_detect(numberInterruptPIN, GPIO.RISING)
     GPIO.add_event_detect(messageInterruptPIN, GPIO.RISING)
