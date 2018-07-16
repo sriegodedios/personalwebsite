@@ -57,7 +57,7 @@ if __name__ == '__main__':
     GPIO.add_event_detect(messageInterruptPIN, GPIO.RISING)
     print("Listening for communication to arduino!!")
     while 1:
-
+        print("Listening confirmed")
         try:
             if GPIO.event_detected(numberInterruptPIN):
                 try:
